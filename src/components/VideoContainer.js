@@ -13,23 +13,35 @@ const VideoContainer = () => {
   useEffect(() => {
     fetchVideosData();    
     dispatch(setMenu());
-  }, [])
+  }, [dispatch])
   
   async function fetchVideosData() {
-    const response = await fetch(API);
-    const result = await response.json();
-    setVideos(result.items);
-    //console.log("Result array is", result.items)
+    try {
+      const response = await fetch(API);
+      const result = await response.json();
+      if (result && result.items) {
+        setVideos(result.items);
+      }
+    } catch (error) {
+      console.error("Error fetching videos:", error);
+      setVideos([]);
+    }
   }
 
   return (
     <div className='flex flex-wrap gap-x-9 gap-y-7 max-w-6xl justify-center mt-3'>
 
-      {videos.map((video) => (
-        <Link key={video.id} to={"/watch?v="+ video.id}>
-        <VideoCard key={video.id} info={video}/>
-        </Link>
-      ))}
+      {videos && videos.length > 0 ? (
+        videos.map((video) => (
+          <Link key={video.id} to={"/watch?v="+ video.id}>
+            <VideoCard key={video.id} info={video}/>
+          </Link>
+        ))
+      ) : (
+        <div className="text-center py-10">
+          <p className="text-xl text-gray-600 font-semibold">Loading videos...</p>
+        </div>
+      )}
 
       
     </div>

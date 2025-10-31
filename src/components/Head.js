@@ -16,6 +16,20 @@ const Head = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const fetchSearchData = React.useCallback(async () => {
+    console.log("Fetch data for - ", searchQuery);
+    let fetchedDataArray = [];
+    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchQuery}`)}`)
+    .then(response => {
+      if (response.ok) return response.json()
+      throw new Error('Network response was not ok.')
+    }).then(data => { 
+      fetchedDataArray = JSON.parse(data.contents)
+      setsearchResults(fetchedDataArray[1]);
+      dispatch(cacheResults( { [searchQuery]:fetchedDataArray[1] } ))
+    });
+  }, [searchQuery, dispatch])
+
   useEffect(() => {
     setShowSuggesstions(false);
   }, [])
@@ -38,26 +52,10 @@ const Head = () => {
   }, [searchQuery, cachedResults, fetchSearchData])
   
   const handleKeyPress = (event) => {
-    // Check if the key pressed is the "Enter" key (keyCode 13)
     if (event.key === "Enter") {
-      // Perform your desired action here, e.g., submit the form, search, etc.
       navigate(`/results?search_query=${searchQuery}`)
     }
   }
-
-  const fetchSearchData = React.useCallback(async () => {
-    console.log("Fetch data for - ", searchQuery);
-    let fetchedDataArray = [];
-    fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchQuery}`)}`)
-    .then(response => {
-      if (response.ok) return response.json()
-      throw new Error('Network response was not ok.')
-    }).then(data => { 
-      fetchedDataArray = JSON.parse(data.contents)
-      setsearchResults(fetchedDataArray[1]);
-      dispatch(cacheResults( { [searchQuery]:fetchedDataArray[1] } ))
-    });
-  }, [searchQuery, dispatch])
 
   
   function handleMenuClick() {
