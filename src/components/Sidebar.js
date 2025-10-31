@@ -34,35 +34,54 @@ const Sidebar = () => {
 
   return (
     <>
-        <div className={`p-6 fixed left-0 bg-gradient-to-b from-purple-50 to-pink-50 h-[100vh] shadow-2xl w-64 backdrop-blur-sm border-r border-purple-200 ${ watchPage ? 'absolute z-50 left-0 h-full' : '' }`}>
-      <ul className='flex flex-col gap-3 text-lg'>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">  
-          <a href='/' className="flex items-center">
-            <svg className="w-5 h-5 mr-3 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+        <div className={`py-2 px-3 fixed left-0 bg-white h-[100vh] w-60 overflow-y-auto ${ watchPage ? 'absolute z-50 left-0 h-full' : '' }`}>
+      <ul className='flex flex-col text-sm'>
+        <li className="hover:bg-gray-100 px-3 py-2 rounded-lg cursor-pointer">  
+          <a href='/' className="flex items-center gap-6">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
             </svg>
-            Home
+            <span className="font-medium">Home</span>
           </a> 
         </li>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Demo</li> 
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Shorts</li>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Videos</li>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Live</li>
+        <li className="hover:bg-gray-100 px-3 py-2 rounded-lg cursor-pointer flex items-center gap-6">
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33c-.77-.32-1.2-.5-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zM10 14.65v-5.3L15 12l-5 2.65z"/>
+          </svg>
+          <span className="font-medium">Shorts</span>
+        </li> 
+        <li className="hover:bg-gray-100 px-3 py-2 rounded-lg cursor-pointer flex items-center gap-6">
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.7 8.7H5.3V7h13.4v1.7zm0 3.5H5.3v-1.7h13.4v1.7zm-4.1 3.5H5.3V14h9.3v1.7z"/>
+          </svg>
+          <span className="font-medium">Subscriptions</span>
+        </li>
       </ul>
-      <h1 className="text-xl font-bold pt-6 pb-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Subscriptions</h1>
-      <ul className='flex flex-col gap-3 text-lg'>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Music</li>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Sports</li>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Gaming</li>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Movies</li>
+      <hr className="my-2 border-gray-200"/>
+      <ul className='flex flex-col text-sm'>
+        <li className="hover:bg-gray-100 px-3 py-2 rounded-lg cursor-pointer flex items-center gap-6">
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M11 7l-6 3.5L11 14V7zm1 0v7l6-3.5L12 7z"/>
+          </svg>
+          <span className="font-medium">Library</span>
+        </li>
+        <li className="hover:bg-gray-100 px-3 py-2 rounded-lg cursor-pointer flex items-center gap-6">
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.97 16.95L10 13.87V7h2v5.76l4.03 2.49-1.06 1.7zM12 3c-4.96 0-9 4.04-9 9s4.04 9 9 9 9-4.04 9-9-4.04-9-9-9m0-2c6.08 0 11 4.92 11 11s-4.92 11-11 11S1 18.08 1 12 5.92 1 12 1z"/>
+          </svg>
+          <span className="font-medium">History</span>
+        </li>
       </ul>
-      <h1 className="text-xl font-bold pt-6 pb-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Watch Later</h1>
-      <ul className='flex flex-col gap-3 text-lg'>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Music</li>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Sports</li>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Gaming</li>
-        <li className="hover:bg-gradient-to-r hover:from-purple-200 hover:to-pink-200 p-3 rounded-xl transition-all duration-200 cursor-pointer font-semibold text-gray-700">Movies</li>
-       </ul>
+      <hr className="my-2 border-gray-200"/>
+      <div className='px-3 py-2'>
+        <h3 className="text-sm font-semibold mb-2 text-gray-800">Subscriptions</h3>
+        <ul className='flex flex-col text-sm'>
+          <li className="hover:bg-gray-100 px-3 py-2 rounded-lg cursor-pointer font-normal">Music</li>
+          <li className="hover:bg-gray-100 px-3 py-2 rounded-lg cursor-pointer font-normal">Sports</li>
+          <li className="hover:bg-gray-100 px-3 py-2 rounded-lg cursor-pointer font-normal">Gaming</li>
+          <li className="hover:bg-gray-100 px-3 py-2 rounded-lg cursor-pointer font-normal">Movies</li>
+        </ul>
+      </div>
       </div>
       {watchPage && (
         <div onClick={() => handleMenuClick() }   className=' w-full h-full z-0 absolute bg-black opacity-50'>

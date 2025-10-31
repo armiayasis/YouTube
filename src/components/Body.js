@@ -9,7 +9,7 @@ const Body = () => {
   return (
     <>
       <Head/>
-      <div className={`flex min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100
+      <div className={`flex min-h-screen bg-[#f9f9f9]
       ${isMenuOpen && !location.pathname.includes('watch')  ? "justify-center" : ("justify-center ml-0") }`}>
         <Sidebar/>
         <Outlet/>
