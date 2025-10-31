@@ -1,9 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {toggleMenu} from '../utils/AppSlice'
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { YOUTUBE_SEARCH } from '../utils/Constants';
 import { cacheResults } from '../utils/searchSlice';
 import { BsSearch } from 'react-icons/bs';
 
@@ -44,7 +42,7 @@ const Head = () => {
       else{
         fetchSearchData();
       }
-    }, 200);
+    }, 50);
   
     return () => {
       clearTimeout(timer);
@@ -57,22 +55,9 @@ const Head = () => {
     }
   }
 
-  
-  function handleMenuClick() {
-    dispatch(toggleMenu());
-  }
   return (
     <div className="grid grid-flow-col px-4 py-2 sticky top-0 z-10 bg-white">
       <div className="flex col-span-1 items-center gap-4">
-        <div 
-          onClick={handleMenuClick}
-          className="h-10 w-10 cursor-pointer hover:bg-gray-100 rounded-full flex items-center justify-center"
-        >
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-          </svg>
-        </div>
-        
         <a href='/' className="flex items-center">
           <img
             className="h-5"

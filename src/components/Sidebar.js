@@ -1,40 +1,13 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom';
-import { setWatchPageFalse, setWatchPageTrue } from '../utils/AppSlice';
-import { useEffect } from 'react';
-import { toggleMenu } from '../utils/AppSlice';
+import { useSelector } from 'react-redux'
+
 const Sidebar = () => {
   const isMenuOpen = useSelector(state => state.app.isMenuOpen);
-  const watchPage = useSelector(state => state.app.watchPage)
-  const dispatch = useDispatch(); 
-  const location = useLocation();
-  
-  
-  useEffect(() => {
-    
-    if (isMenuOpen && location.pathname.includes('watch')) {
-      dispatch(setWatchPageTrue())
-      document.documentElement.style.overflow =  'hidden';
-      document.body.style.overflow = 'hidden';
-    }
-  
-    return () => {
-      dispatch(setWatchPageFalse())
-      
-    }
-  })
-  
-  function handleMenuClick() {
-    dispatch(toggleMenu());
-  }
 
-  // absolute left-0 bg-white h-full
-  if(!isMenuOpen) return true;
+  if(!isMenuOpen) return null;
 
   return (
-    <>
-        <div className={`py-2 px-3 fixed left-0 bg-white h-[100vh] w-60 overflow-y-auto ${ watchPage ? 'absolute z-50 left-0 h-full' : '' }`}>
+    <div className="py-2 px-3 fixed left-0 bg-white h-[100vh] w-60 overflow-y-auto z-10">
       <ul className='flex flex-col text-sm'>
         <li className="hover:bg-gray-100 px-3 py-2 rounded-lg cursor-pointer">  
           <a href='/' className="flex items-center gap-6">
@@ -83,13 +56,6 @@ const Sidebar = () => {
         </ul>
       </div>
       </div>
-      {watchPage && (
-        <div onClick={() => handleMenuClick() }   className=' w-full h-full z-0 absolute bg-black opacity-50'>
-
-        </div>
-      )}
-    </>
-    
   )
 }
 
