@@ -5,17 +5,17 @@ const VideoCard = ({info}) => {
     const {title, channelTitle, thumbnails } = snippet;
     const {viewCount} = statistics;
   return (
-    <div className="p-3 m-3 w-80 min-h-[320px] bg-white/95 backdrop-blur-sm shadow-xl rounded-2xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 cursor-pointer overflow-hidden border border-purple-100">
-        <div className="relative overflow-hidden rounded-xl group">
-          <img className="rounded-xl object-cover w-full h-48 group-hover:scale-110 transition-transform duration-300" src={thumbnails.medium.url} alt={title}/>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <div className="w-full max-w-[360px] cursor-pointer">
+        <div className="relative w-full">
+          <img className="w-full aspect-video rounded-xl object-cover" src={thumbnails.medium.url} alt={title}/>
         </div>
-        <p className="line-clamp-2 font-bold text-lg pt-3 overflow-hidden text-gray-800 leading-tight">{title}</p>
-        <p className='text-purple-600 font-semibold mt-2'>{channelTitle}</p>
-        <div className="flex items-center mt-2">
-          <span className="text-sm text-gray-600 bg-gradient-to-r from-purple-100 to-pink-100 px-3 py-1 rounded-full">
-            {parseInt(viewCount).toLocaleString()} views
-          </span>
+        <div className="flex gap-3 pt-3">
+          <div className="flex-shrink-0 w-9 h-9 rounded-full bg-gray-300"></div>
+          <div className="flex-1">
+            <h3 className="font-medium text-sm line-clamp-2 leading-5 mb-1">{title}</h3>
+            <p className='text-xs text-gray-600'>{channelTitle}</p>
+            <p className="text-xs text-gray-600">{parseInt(viewCount).toLocaleString()} views</p>
+          </div>
         </div>
     </div>
   )

@@ -42,7 +42,7 @@ const SearchResults = () => {
     }
   return (
     <div className={`flex-grow max-w-6xl ${isMenuOpen ? 'ml-[240px]' : 'mx-auto'}`}>
-        <div className='  ml-6 flex flex-col gap-3 mt-6 border-black border-b'>    
+        <div className='px-6 flex flex-col gap-4 mt-6'>    
 
             {videosArray && videosArray.length > 0 ? (
               videosArray.map((video) => (
