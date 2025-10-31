@@ -62,47 +62,49 @@ const Head = () => {
     dispatch(toggleMenu());
   }
   return (
-    <div className="grid grid-flow-col p-5 sticky top-0 z-10 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 shadow-xl backdrop-blur-sm">
-      <div className="flex col-span-1 items-center">
+    <div className="grid grid-flow-col px-4 py-2 sticky top-0 z-10 bg-white">
+      <div className="flex col-span-1 items-center gap-4">
         <div 
           onClick={handleMenuClick}
-          className="h-10 w-10 cursor-pointer bg-white/20 rounded-lg flex items-center justify-center hover:bg-white/30 transition-all duration-300"
+          className="h-10 w-10 cursor-pointer hover:bg-gray-100 rounded-full flex items-center justify-center"
         >
-          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
           </svg>
         </div>
         
-        <a href='/' className="ml-3 flex items-center">
-          <div className="bg-white px-3 py-1 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-            <span className="text-2xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">YouTube</span>
-          </div>
+        <a href='/' className="flex items-center">
+          <img
+            className="h-5"
+            alt="youtube-logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
+          />
         </a>
       </div>
 
-      <div className="col-span-10 px-10">
-        <div className='flex items-center justify-center'>
+      <div className="col-span-10 px-10 flex items-center">
+        <div className='flex items-center w-full max-w-2xl mx-auto'>
           <input
-            className="px-5 w-1/2 border-2 border-white/30 p-3 rounded-l-full bg-white/90 backdrop-blur-sm shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-gray-500 text-gray-800 font-medium"
+            className="px-4 w-full border border-gray-300 py-2 rounded-l-full focus:outline-none focus:border-blue-500 placeholder-gray-500 text-sm"
             type="text"
-            placeholder="Search..."
+            placeholder="Search"
             value={searchQuery}
             onChange={(e)=> setSearchQuery(e.target.value)}
             onFocus={()=>  setShowSuggesstions(true)}
             onKeyDown={handleKeyPress}
             onBlur= {() => {setTimeout(()=>{setShowSuggesstions(false)},100)}}
           />
-          <button className="border-2 border-white/30 px-6 py-[14px] rounded-r-full bg-white/80 hover:bg-white transition-all duration-300 shadow-lg">
-            <BsSearch className="text-purple-600"/>
+          <button className="border border-l-0 border-gray-300 px-6 py-2 rounded-r-full bg-gray-50 hover:bg-gray-100">
+            <BsSearch className="text-gray-600"/>
           </button>
         </div>
         { showSuggesstions && searchQuery.length > 0 && (
-          <div className="absolute z-[150] bg-white/95 backdrop-blur-md py-2 px-2 w-[37rem] shadow-2xl rounded-xl border border-purple-200 mt-2">
+          <div className="absolute z-[150] bg-white py-2 w-[37rem] shadow-2xl rounded-xl border border-gray-200 mt-2 top-12">
             <ul>
               { searchResults.map((s) => 
                  (<Link key={s} to={`/results?search_query=${s}`}>
-                  <li key={s}  className="py-3 px-4 shadow-sm hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 rounded-lg flex items-center transition-all duration-200">
-                  <BsSearch className='mr-3 text-purple-600'/> <span className="text-gray-700 font-medium">{s}</span>
+                  <li className="py-2 px-4 hover:bg-gray-100 flex items-center text-sm">
+                  <BsSearch className='mr-3 text-gray-600'/> {s}
                   </li>
                 </Link>)
               )}
@@ -110,11 +112,9 @@ const Head = () => {
           </div>)}
 
       </div>
-      <div className="col-span-1 flex items-center justify-end">
-        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-yellow-400 to-pink-500 p-0.5 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
-          <div className="h-full w-full rounded-full bg-white flex items-center justify-center">
-            <span className="text-purple-600 font-bold text-lg">U</span>
-          </div>
+      <div className="col-span-1 flex items-center justify-end gap-3">
+        <div className="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center cursor-pointer">
+          <span className="text-white font-medium text-sm">U</span>
         </div>
       </div>
       
